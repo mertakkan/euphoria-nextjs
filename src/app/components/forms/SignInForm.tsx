@@ -2,7 +2,7 @@
 
 'use client';
 
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import Link from 'next/link';
 import Button from '../ui/Button';
@@ -59,7 +59,12 @@ export default function SignInForm() {
     <div className="flex w-full">
       <div className="md:w-1/2 flex ites-center justify-center">
         <div className="relative hidden md:block w-full h-full">
-          <Image src="/women-1.jpg" alt="Women Clothes Picture" layout="fill" />
+          <Image
+            src="/women-1.jpg"
+            alt="Women Clothes Picture"
+            layout="fill"
+            priority={true}
+          />
         </div>
       </div>
       <form
@@ -72,7 +77,8 @@ export default function SignInForm() {
             src="/GoogleLogo.svg"
             alt="Google Icon"
             width={20}
-            height={10}
+            height={20}
+            priority={false}
           />
           Continue With Google
         </button>

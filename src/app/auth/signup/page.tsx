@@ -1,3 +1,5 @@
+//src/app/auth/signup/page.tsx
+
 import SignUpForm from '@/app/components/forms/SignUpForm';
 
 export default function SignUp() {

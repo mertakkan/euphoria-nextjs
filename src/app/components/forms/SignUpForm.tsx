@@ -1,7 +1,7 @@
 //src/app/components/forms/SignUpForm.tsx
 
 'use client';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
@@ -58,7 +58,12 @@ export default function SignInForm() {
     <div className="flex w-full">
       <div className="md:w-1/2 flex ites-center justify-center">
         <div className="relative hidden md:block w-full h-full">
-          <Image src="/women-2.jpg" alt="Group of young people" layout="fill" />
+          <Image
+            src="/women-2.jpg"
+            alt="Group of young people"
+            layout="fill"
+            priority={true}
+          />
         </div>
       </div>
       <form
@@ -76,7 +81,7 @@ export default function SignInForm() {
             src="/GoogleLogo.svg"
             alt="Google Icon"
             width={20}
-            height={10}
+            height={20}
           />
           Continue With Google
         </button>
