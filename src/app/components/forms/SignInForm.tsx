@@ -9,6 +9,7 @@ import Button from '../ui/Button';
 import InputField from '../ui/InputField';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { validateEmail, validatePassword } from '@/app/utils/formValidation';
+import { signIn } from 'next-auth/react';
 
 export default function SignInForm() {
   const [email, setEmail] = useState('');
@@ -31,7 +32,7 @@ export default function SignInForm() {
     setPasswordError(validatePassword(e.target.value));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let hasError = false;
@@ -52,6 +53,26 @@ export default function SignInForm() {
       hasError = true;
     } else {
       setPasswordError('');
+    }
+
+    if (!hasError) {
+      try {
+        const response = await fetch('/api/auth/callback/credentials', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+          // Sign-in successful, redirect to home page
+          window.location.href = '/';
+        } else {
+          // Handle sign-in error
+          console.error('Sign-in failed');
+        }
+      } catch (error) {
+        console.error('Error during sign-in:', error);
+      }
     }
   };
 

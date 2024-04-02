@@ -30,7 +30,7 @@ export default function SignInForm() {
     setPasswordError(validatePassword(e.target.value));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     let hasError = false;
@@ -51,6 +51,26 @@ export default function SignInForm() {
       hasError = true;
     } else {
       setPasswordError('');
+    }
+
+    if (!hasError) {
+      try {
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+          // Registration successful, redirect to sign-in page
+          window.location.href = '/auth/signin';
+        } else {
+          // Handle registration error
+          console.error('Registration failed');
+        }
+      } catch (error) {
+        console.error('Error during registration:', error);
+      }
     }
   };
 
