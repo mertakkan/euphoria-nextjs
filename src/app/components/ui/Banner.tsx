@@ -74,7 +74,7 @@ const Banner = () => {
           >
             &lt;
           </button>
-          <div className="text-center text-white">
+          <div className="text-center absolute top-1 left-[50%] translate-x-[-50%]">
             <h2 className="text-2xl font-bold">{title}</h2>
             <p>{description}</p>
           </div>
