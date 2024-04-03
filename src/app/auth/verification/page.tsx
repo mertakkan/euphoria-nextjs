@@ -1,3 +1,5 @@
+//src\app\auth\verification\page.tsx
+
 import VerificationForm from '@/app/components/forms/VerificationForm';
 
 export default function VerificationPage() {

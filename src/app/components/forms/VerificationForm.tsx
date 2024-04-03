@@ -1,4 +1,6 @@
-import Image from "next/legacy/image";
+//src\app\components\forms\VerificationForm.tsx
+
+import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import Link from 'next/link';
 import Button from '../ui/Button';

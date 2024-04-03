@@ -2,6 +2,7 @@
 'use client';
 import { SessionProvider } from 'next-auth/react';
 import Navbar from './components/ui/Navbar';
+import Footer from './components/ui/Footer';
 import Head from 'next/head';
 import './styles/globals.css';
 import type { ReactNode } from 'react';
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
