@@ -1,10 +1,26 @@
+//src/app/components/ui/Navbar
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { fonts } from '@/app/utils/fonts';
 import Button from './Button';
+import { signOut, useSession, SessionProvider } from 'next-auth/react';
 
 export default function Navbar() {
-  const isLoggedIn = false; // login status logic
+  return (
+    <SessionProvider>
+      <NavbarContent />
+    </SessionProvider>
+  );
+}
+
+function NavbarContent() {
+  const { data: session } = useSession();
+  const isLoggedIn = !!session;
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: '/' }); // Redirect to the home page after sign-out
+  };
 
   return (
     <nav className={`${fonts.inter} font-sans bg-white shadow-md`}>
@@ -76,8 +92,11 @@ export default function Navbar() {
             </div>
             {isLoggedIn ? (
               <div className="ml-4">
-                <button className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium">
-                  Logout
+                <button
+                  className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
                 </button>
               </div>
             ) : (

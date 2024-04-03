@@ -2,10 +2,17 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import prisma from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
+import { SessionStrategy } from 'next-auth';
+
+const prisma = new PrismaClient();
 
 export const authOptions = {
+  session: {
+    // Set to jwt in order to CredentialsProvider works properly
+    strategy: 'jwt' as SessionStrategy,
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -15,21 +22,32 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const user = await prisma.user.findUnique({
-          where: { email: credentials?.email },
-        });
-
-        if (
-          user &&
-          (await bcrypt.compare(credentials?.password ?? '', user.password))
-        ) {
-          return user;
+        if (!credentials?.email) {
+          throw new Error('Email is required');
         }
 
-        return null;
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email },
+        });
+
+        if (!user) {
+          throw new Error('No user found with the provided email');
+        }
+
+        const isPasswordValid = await bcrypt.compare(
+          credentials?.password ?? '',
+          user.password
+        );
+
+        if (!isPasswordValid) {
+          throw new Error('Invalid password');
+        }
+
+        return user;
       },
     }),
   ],
+
   pages: {
     signIn: '/auth/signin',
   },

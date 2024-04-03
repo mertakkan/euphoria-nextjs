@@ -57,13 +57,13 @@ export default function SignInForm() {
 
     if (!hasError) {
       try {
-        const response = await fetch('/api/auth/callback/credentials', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password }),
+        const result = await signIn('credentials', {
+          redirect: false,
+          email,
+          password,
         });
 
-        if (response.ok) {
+        if (result?.ok) {
           // Sign-in successful, redirect to home page
           window.location.href = '/';
         } else {
