@@ -1,3 +1,5 @@
+//src\app\components\ui\Banner.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -77,11 +79,11 @@ const Banner = () => {
           >
             &lt;
           </button>
-          <div className="text-center absolute left-[10%] top-[20%]">
-            <p className="text-2xl">{category}</p>
-            <h2 className="text-4xl font-bold mt-16 mb-16">{title}</h2>
-            <p className="text-2xl">{description}</p>
-            <ShopButton className="mt-16 border-0 rounded-xl text-2xl font-bold px-16 bg-white text-slate-950 hover:text-white hover:bg-[#003049]">
+          <div className="text-center absolute left-[10%] top-[50%] translate-y-[-50%]">
+            <p className="text-4xl">{category}</p>
+            <h2 className="text-5xl font-bold mt-24 mb-24">{title}</h2>
+            <p className="text-4xl">{description}</p>
+            <ShopButton className="mt-24 border-0 rounded-xl text-2xl font-bold px-16 bg-white text-slate-950 hover:text-white hover:bg-[#003049]">
               Shop Now
             </ShopButton>
           </div>
