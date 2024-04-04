@@ -2,6 +2,7 @@
 
 import Banner from '../components/ui/Banner';
 import DealCards from '../components/ui/DealCards';
+import NewArrivals from '../components/ui/NewArrivals';
 
 export default function ShopPage() {
   return (
@@ -10,6 +11,7 @@ export default function ShopPage() {
       <div className="flex justify-center">
         <DealCards />
       </div>
+      <NewArrivals />
     </main>
   );
 }

@@ -5,7 +5,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { fonts } from '@/app/utils/fonts';
-import ShopButton from './ShopButton';
 
 interface DealCardProps {
   title: string;
