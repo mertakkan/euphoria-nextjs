@@ -79,11 +79,11 @@ const Banner = () => {
           >
             &lt;
           </button>
-          <div className="text-center absolute left-[10%] top-[50%] translate-y-[-50%]">
+          <div className="text-center absolute left-[10%] top-[50%] translate-y-[-50%] w-[25%]">
             <p className="text-4xl">{category}</p>
             <h2 className="text-5xl font-bold mt-24 mb-24">{title}</h2>
             <p className="text-4xl">{description}</p>
-            <ShopButton className="mt-24 border-0 rounded-xl text-2xl font-bold px-16 bg-white text-slate-950 hover:text-white hover:bg-[#003049]">
+            <ShopButton className="text-slate-900 mt-24 border-0 rounded-xl text-2xl font-bold px-16 bg-white hover:text-white hover:bg-[#003049]">
               Shop Now
             </ShopButton>
           </div>
