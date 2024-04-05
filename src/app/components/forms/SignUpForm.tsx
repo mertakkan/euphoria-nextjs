@@ -5,7 +5,7 @@ import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
-import Button from '../ui/Button';
+import { Button } from '../ui/button';
 import InputField from '../ui/InputField';
 import { validateEmail, validatePassword } from '@/app/utils/formValidation';
 
@@ -160,7 +160,7 @@ export default function SignInForm() {
           </div>
         </div>
         <div className="w-2/3">
-          <Button className="w-1/3">Sign Up</Button>
+          <Button>Sign Up</Button>
           <p className="text-gray-600 mt-2">
             Already have an account?{' '}
             <Link

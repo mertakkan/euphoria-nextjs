@@ -3,7 +3,7 @@
 import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import Link from 'next/link';
-import Button from '../ui/Button';
+import { Button } from '../ui/button';
 
 export default function VerificationForm() {
   return (

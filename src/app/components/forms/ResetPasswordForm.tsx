@@ -1,9 +1,9 @@
 'use client';
 
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import Link from 'next/link';
-import Button from '../ui/Button';
+import { Button } from '../ui/button';
 import InputField from '../ui/InputField';
 import { FormEvent, useState } from 'react';
 
@@ -52,7 +52,7 @@ export default function ResetPasswordForm() {
           />
         </div>
         <div className="w-2/3">
-          <Button className="w-1/3">Reset</Button>
+          <Button>Reset</Button>
           <p className="text-gray-600 mt-2">
             Back to{' '}
             <Link

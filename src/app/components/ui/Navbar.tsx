@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { fonts } from '@/app/utils/fonts';
-import Button from './Button';
+import { Button } from './button';
 import { signOut, useSession, SessionProvider } from 'next-auth/react';
 
 export default function Navbar() {
@@ -24,9 +24,9 @@ function NavbarContent() {
 
   return (
     <nav className={`${fonts.inter} font-sans bg-white shadow-md`}>
-      <div className="max-w-7xl mx-auto p-2 sm:px-6 lg:px-8">
+      <div className="w-4/5 mx-auto p-2 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
+          <div className="flex items-center">
             <Link href="/">
               <Image
                 src="/Logo.svg"
@@ -100,7 +100,7 @@ function NavbarContent() {
                 </button>
               </div>
             ) : (
-              <div className="ml-4">
+              <div className="ml-4 w-full">
                 <Link href="/auth/signin">
                   <Button>Sign In</Button>
                 </Link>

@@ -25,7 +25,7 @@ const DealCard: React.FC<DealCardProps> = ({
         <Image
           src={image}
           alt={title}
-          width={600}
+          width={550}
           height={300}
           objectFit="cover"
           className="rounded-xl shadow-lg"

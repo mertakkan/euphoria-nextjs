@@ -1,8 +1,8 @@
 import { FormEvent, useState } from 'react';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import { fonts } from '@/app/utils/fonts';
 import Link from 'next/link';
-import Button from '../ui/Button';
+import { Button } from '../ui/button';
 import InputField from '../ui/InputField';
 import { validatePassword } from '@/app/utils/formValidation';
 
@@ -74,7 +74,7 @@ export default function NewPasswordForm() {
           </pre>
         )}
         <div className="w-2/3">
-          <Button className="w-1/3">Send</Button>
+          <Button>Send</Button>
         </div>
       </form>
     </div>

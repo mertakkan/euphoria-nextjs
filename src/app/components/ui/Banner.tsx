@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { fonts } from '@/app/utils/fonts';
-import ShopButton from './ShopButton';
+import { Button } from './button';
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -82,10 +82,10 @@ const Banner = () => {
           <div className="text-center absolute left-[10%] top-[50%] translate-y-[-50%] w-[25%]">
             <p className="text-4xl">{category}</p>
             <h2 className="text-5xl font-bold mt-24 mb-24">{title}</h2>
-            <p className="text-4xl">{description}</p>
-            <ShopButton className="text-slate-900 mt-24 border-0 rounded-xl text-2xl font-bold px-16 bg-white hover:text-white hover:bg-[#003049]">
+            <p className="text-4xl mb-24">{description}</p>
+            <Button variant="banner" size="lg">
               Shop Now
-            </ShopButton>
+            </Button>
           </div>
           <button
             onClick={handleNextClick}
