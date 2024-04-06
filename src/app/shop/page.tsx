@@ -3,6 +3,7 @@
 import Banner from '../components/ui/Banner';
 import DealCards from '../components/ui/DealCards';
 import Arrivals from '../components/ui/ArrivalsCarousel';
+import SavingZone from '../components/ui/SavingZone';
 
 export default function ShopPage() {
   return (
@@ -14,6 +15,7 @@ export default function ShopPage() {
       <div className="flex justify-center">
         <Arrivals />
       </div>
+      <SavingZone />
     </main>
   );
 }
