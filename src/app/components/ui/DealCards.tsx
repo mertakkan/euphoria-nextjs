@@ -65,13 +65,15 @@ const DealCards = () => {
   return (
     <div className={`${fonts.inter} flex p-10 gap-40`}>
       {dealsData.map((deal, index) => (
-        <DealCard
-          key={index}
-          title={deal.title}
-          description={deal.description}
-          sale={deal.sale}
-          image={deal.image}
-        />
+        <div className=" transition duration-300 hover:scale-[105%]">
+          <DealCard
+            key={index}
+            title={deal.title}
+            description={deal.description}
+            sale={deal.sale}
+            image={deal.image}
+          />
+        </div>
       ))}
     </div>
   );

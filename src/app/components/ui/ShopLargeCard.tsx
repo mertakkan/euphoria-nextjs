@@ -2,7 +2,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { fonts } from '@/app/utils/fonts';
 import { Button } from './button';
@@ -38,6 +38,34 @@ const DealCard: React.FC<DealCardProps> = ({ title, description, image }) => {
 };
 
 const ShopLargeCard = () => {
+  const [isInView, setIsInView] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+          } else {
+            setIsInView(false);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   const dealsData = [
     {
       title: 'WE MADE YOUR EVERYDAY FASHION BETTER',
@@ -50,12 +78,21 @@ const ShopLargeCard = () => {
   return (
     <div className={`${fonts.inter} flex p-10 gap-40`}>
       {dealsData.map((deal, index) => (
-        <DealCard
+        <div
           key={index}
-          title={deal.title}
-          description={deal.description}
-          image={deal.image}
-        />
+          ref={cardRef}
+          className={`${fonts.inter} relative w-full ${
+            isInView
+              ? 'scale-105 transition-transform duration-500'
+              : 'scale-100 transition-transform duration-500'
+          }`}
+        >
+          <DealCard
+            title={deal.title}
+            description={deal.description}
+            image={deal.image}
+          />
+        </div>
       ))}
     </div>
   );
