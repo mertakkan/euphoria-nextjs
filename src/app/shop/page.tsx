@@ -4,6 +4,7 @@ import Banner from '../components/ui/Banner';
 import DealCards from '../components/ui/DealCards';
 import Arrivals from '../components/ui/ArrivalsCarousel';
 import SavingZone from '../components/ui/SavingZone';
+import ShopLargeCard from '../components/ui/ShopLargeCard';
 
 export default function ShopPage() {
   return (
@@ -16,6 +17,9 @@ export default function ShopPage() {
         <Arrivals />
       </div>
       <SavingZone />
+      <div className="flex justify-center">
+        <ShopLargeCard />
+      </div>
     </main>
   );
 }
