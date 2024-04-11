@@ -3,31 +3,36 @@ import { Button } from './button';
 
 const data1 = [
   {
-    title: 'Subscriber',
-    value: 'Sale Now',
+    title: 'Hawaiian Shirts',
+    text: 'Dress up in summer vibe',
+    subtext: 'UPTO 50% OFF',
     image: '/saving-1.jpg',
   },
   {
-    title: 'Revenue',
-    value: 'Sale Now',
+    title: 'Printed T-Shirt',
+    text: 'New Design Every Week',
+    subtext: 'UPTO 40% OFF',
     image: '/saving-1.jpg',
   },
   {
-    title: 'User Count',
-    value: 'Sale Now',
+    title: 'Cargo Joggers',
+    text: 'Move with style & comfort',
+    subtext: 'UPTO 60% OFF',
     image: '/saving-1.jpg',
   },
 ];
 
 const data2 = [
   {
-    title: 'Subscriber',
-    value: 'Sale Now',
+    title: 'Urban Shirts',
+    text: 'Live in Comfort',
+    subtext: 'FLAT 60% OFF',
     image: '/saving-1.jpg',
   },
   {
-    title: 'Revenue',
-    value: 'Sale Now',
+    title: 'Oversized T-Shirts',
+    text: 'Street Style Icon',
+    subtext: 'FLAT 50% OFF',
     image: '/saving-1.jpg',
   },
 ];
@@ -49,9 +54,10 @@ const SavingZone = () => {
               className="rounded-xl"
             />
             <div className="absolute inset-0 flex flex-col justify-center gap-6 text-white p-16">
-              <h2 className="text-xl">{item.title}</h2>
-              <p className="font-bold text-2xl">{item.value}</p>
-              <Button>Button</Button>
+              <h2 className="font-bold text-3xl">{item.title}</h2>
+              <p className="font-medium text-lg">{item.subtext}</p>
+              <p className="font-bold text-xl">{item.text}</p>
+              <Button variant="shop">SHOP NOW</Button>
             </div>
           </div>
         ))}
@@ -74,9 +80,10 @@ const SavingZone = () => {
             />
 
             <div className="absolute inset-0 flex flex-col justify-center gap-6 text-white p-16">
-              <h2 className="text-xl">{item.title}</h2>
-              <p className="font-bold text-2xl">{item.value}</p>
-              <Button>Button</Button>
+              <h2 className="font-bold text-3xl">{item.title}</h2>
+              <p className="font-medium text-lg">{item.subtext}</p>
+              <p className="font-bold text-xl">{item.text}</p>
+              <Button variant="shop">SHOP NOW</Button>
             </div>
           </div>
         ))}
