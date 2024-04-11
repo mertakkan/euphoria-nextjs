@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Button } from './button';
 
 const data1 = [
   {
@@ -33,7 +34,7 @@ const data2 = [
 
 const SavingZone = () => {
   const boxStyle =
-    'relative bg-white border-2 rounded-xl p-2 flex flex-col items-center justify-center';
+    'relative rounded-xl p-2 flex flex-col items-center justify-center';
 
   return (
     <>
@@ -47,12 +48,10 @@ const SavingZone = () => {
               objectFit="cover"
               className="rounded-xl"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white p-4">
+            <div className="absolute inset-0 flex flex-col justify-center gap-6 text-white p-16">
               <h2 className="text-xl">{item.title}</h2>
               <p className="font-bold text-2xl">{item.value}</p>
-              <button className="mt-4 bg-white text-black px-4 py-2 rounded">
-                Button
-              </button>
+              <Button>Button</Button>
             </div>
           </div>
         ))}
@@ -73,12 +72,11 @@ const SavingZone = () => {
               objectFit="cover"
               className="rounded-xl"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white p-4">
-              <h2 className="text-xl text-left">{item.title}</h2>
-              <p className="font-bold text-2xl text-left">{item.value}</p>
-              <button className="mt-4 bg-white text-black px-4 py-2 rounded float-left">
-                Button
-              </button>
+
+            <div className="absolute inset-0 flex flex-col justify-center gap-6 text-white p-16">
+              <h2 className="text-xl">{item.title}</h2>
+              <p className="font-bold text-2xl">{item.value}</p>
+              <Button>Button</Button>
             </div>
           </div>
         ))}
