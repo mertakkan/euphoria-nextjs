@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost:
           'hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50',
         link: 'text-slate-900 underline-offset-4 hover:underline dark:text-slate-50',
-        shop: 'border border-slate-100 w-1/4 text-white hover:bg-slate-400 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90',
+        shop: 'border border-slate-100 w-1/4 text-white hover:bg-slate-100 hover:text-black dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90',
         banner:
           'bg-white text-black text-2xl w-1/2 hover:bg-slate-900/90 hover:text-white dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90',
       },

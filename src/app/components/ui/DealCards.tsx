@@ -63,7 +63,7 @@ const DealCards = () => {
   ];
 
   return (
-    <div className="flex p-10 gap-40">
+    <div className={`${fonts.inter} flex p-10 gap-40`}>
       {dealsData.map((deal, index) => (
         <DealCard
           key={index}
