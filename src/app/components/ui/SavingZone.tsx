@@ -57,7 +57,7 @@ const SavingZone = () => {
               className="rounded-xl"
             />
             <div
-              className={`absolute inset-0 flex flex-col justify-center gap-6 text-white p-16 ${
+              className={`absolute inset-0 flex flex-col justify-center gap-6 p-16 ${
                 k < 2 ? 'text-slate-900' : 'text-white'
               }`}
             >
@@ -98,8 +98,8 @@ const SavingZone = () => {
             />
 
             <div
-              className={`absolute inset-0 flex flex-col justify-center gap-6 text-white p-16 ${
-                i < 2 ? 'text-slate-800' : 'text-white'
+              className={`absolute inset-0 flex flex-col justify-center gap-6 p-16 ${
+                i < 2 ? 'text-slate-900' : 'text-white'
               }`}
             >
               <h2 className="font-bold text-3xl">{item.title}</h2>
