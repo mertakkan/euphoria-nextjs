@@ -47,8 +47,8 @@ const SavingZone = () => {
       <div
         className={`${fonts.inter} grid md:grid-cols-3 auto-rows-[400px] gap-4 p-10`}
       >
-        {data1.map((item, i) => (
-          <div key={i} className={boxStyle}>
+        {data1.map((item, k) => (
+          <div key={k} className={boxStyle}>
             <Image
               src={item.image}
               alt={item.title}
@@ -58,7 +58,7 @@ const SavingZone = () => {
             />
             <div
               className={`absolute inset-0 flex flex-col justify-center gap-6 text-white p-16 ${
-                i < 2 ? 'text-slate-800' : 'text-white'
+                k < 2 ? 'text-slate-900' : 'text-white'
               }`}
             >
               <h2 className="font-bold text-3xl">{item.title}</h2>
@@ -67,7 +67,7 @@ const SavingZone = () => {
               <Button
                 variant="shop"
                 className={
-                  i < 2
+                  k < 2
                     ? 'text-slate-800 border-slate-800 hover:bg-slate-800 hover:text-white'
                     : 'text-white'
                 }
