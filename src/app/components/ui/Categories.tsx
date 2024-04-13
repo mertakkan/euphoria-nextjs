@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Button } from './button';
 import { fonts } from '@/app/utils/fonts';
+import { ChevronRight } from 'lucide-react';
 
 const forMen = [
   {
@@ -50,88 +51,74 @@ const forWomen = [
 
 const Categories = () => {
   const categoryCard =
-    'relative rounded-xl p-2 flex flex-col items-center justify-center';
+    'flex flex-col items-center justify-center rounded-xl overflow-hidden';
   return (
     <>
-      <>
-        <h2 className="text-2xl font-bold mb-8 flex">
-          <span className="bg-blue-500 h-8 w-2 mr-4 ml-4"></span>
+      <div className="p-10">
+        <h2 className="text-2xl font-bold mb-8 flex gap-4">
+          <span className="bg-blue-500 h-8 w-2"></span>
           Categories For Men
         </h2>
         <div
-          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[300px] gap-4 p-10`}
+          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[600px] gap-4`}
         >
           {forMen.map((item, k) => (
             <div key={k} className={categoryCard}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-xl"
-              />
-              <div
-                className={`absolute inset-0 flex flex-col justify-center gap-6 text-white p-16 ${
-                  k < 2 ? 'text-slate-800' : 'text-white'
-                }`}
-              >
-                <h2 className="text-3xl">{item.title}</h2>
-                <p className="text-lg">{item.text}</p>
-                <Button
-                  variant="shop"
-                  className={
-                    k < 2
-                      ? 'text-slate-800 border-slate-800 hover:bg-slate-800 hover:text-white'
-                      : 'text-white'
-                  }
-                >
-                  SHOP NOW
+              <div className="relative h-full w-full">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-xl"
+                />
+              </div>
+              <div className="flex justify-between w-full mt-4 px-6">
+                <div>
+                  <h2 className="text-xl font-bold">{item.title}</h2>
+                  <p className="text-lg">{item.text}</p>
+                </div>
+
+                <Button variant="outline" size="iconCategory">
+                  <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
             </div>
           ))}
         </div>
-      </>
 
-      <>
-        <h2 className="text-2xl font-bold mb-8 flex">
-          <span className="bg-blue-500 h-8 w-2 mr-4 ml-4"></span>
+        <h2 className="text-2xl font-bold mb-8 flex gap-4 mt-20">
+          <span className="bg-blue-500 h-8 w-2"></span>
           Categories For Women
         </h2>
         <div
-          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[300px] gap-4 p-10`}
+          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[600px] gap-4`}
         >
           {forWomen.map((item, j) => (
             <div key={j} className={categoryCard}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-xl"
-              />
-              <div
-                className={`absolute inset-0 flex flex-col justify-center gap-6 text-white p-16 ${
-                  j < 2 ? 'text-slate-800' : 'text-white'
-                }`}
-              >
-                <h2 className="text-3xl">{item.title}</h2>
-                <p className="text-lg">{item.text}</p>
-                <Button
-                  variant="shop"
-                  className={
-                    j < 2
-                      ? 'text-slate-800 border-slate-800 hover:bg-slate-800 hover:text-white'
-                      : 'text-white'
-                  }
-                >
-                  SHOP NOW
+              <div className="relative h-3/4 w-full">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-xl"
+                />
+              </div>
+              <div className="flex justify-between w-full mt-4 px-6">
+                <div>
+                  <h2 className="text-xl font-bold">{item.title}</h2>
+                  <p className="text-lg">{item.text}</p>
+                </div>
+
+                <Button variant="outline" size="iconCategory">
+                  <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
             </div>
           ))}
         </div>
-      </>
+      </div>
     </>
   );
 };
