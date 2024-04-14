@@ -68,7 +68,7 @@ const Limelight = () => {
                   <p className="text-lg">{item.text}</p>
                 </div>
 
-                <Button variant="outline" size="sm" className="bg-gray-100">
+                <Button variant="outline" size="sm" className="bg-gray-100/75">
                   <p className="text-lg font-medium">{item.price}</p>
                 </Button>
               </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { fonts } from '@/app/utils/fonts';
 
@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className={`${fonts.inter} bg-[#3C4242] text-white py-8`}>
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-10">
           <div>
             <h3 className="text-2xl font-bold mb-4">Need Help</h3>
             <ul className="space-y-2 text-xl font-light">
@@ -106,16 +106,16 @@ const Footer = () => {
               <Image
                 src="/playstoreFooter.png"
                 alt="Google Play"
-                width={155}
-                height={40}
+                width={160}
+                height={60}
               />
             </Link>
             <Link href="#">
               <Image
                 src="/appstoreFooter.png"
                 alt="App Store"
-                width={155}
-                height={40}
+                width={160}
+                height={60}
               />
             </Link>
           </div>
