@@ -6,6 +6,7 @@ import Arrivals from '../components/ui/ArrivalsCarousel';
 import SavingZone from '../components/ui/SavingZone';
 import ShopLargeCard from '../components/ui/ShopLargeCard';
 import Categories from '../components/ui/Categories';
+import TopBrands from '../components/ui/TopBrands';
 
 export default function ShopPage() {
   return (
@@ -22,6 +23,9 @@ export default function ShopPage() {
         <ShopLargeCard />
       </div>
       <Categories />
+      <div className="m-28">
+        <TopBrands />
+      </div>
     </main>
   );
 }
