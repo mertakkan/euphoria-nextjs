@@ -60,7 +60,7 @@ const Categories = () => {
           Categories For Men
         </h2>
         <div
-          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[600px] gap-4`}
+          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[600px] gap-16`}
         >
           {forMen.map((item, k) => (
             <div key={k} className={categoryCard}>
@@ -92,7 +92,7 @@ const Categories = () => {
           Categories For Women
         </h2>
         <div
-          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[600px] gap-4`}
+          className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[600px] gap-16`}
         >
           {forWomen.map((item, j) => (
             <div key={j} className={categoryCard}>
