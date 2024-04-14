@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import {
   Carousel,
@@ -18,23 +18,23 @@ export function Arrivals() {
   const arrivalsData: ArrivalCard[] = [
     {
       title: 'Knitted Joggers',
-      image: '/arrival-7.jpg',
+      image: '/arrival/arrival-5.jpg',
     },
     {
       title: 'Full Sleeve',
-      image: '/arrival-6.jpg',
+      image: '/arrival/arrival-6.jpg',
     },
     {
       title: 'Active T-Shirts',
-      image: '/arrival-7.jpg',
+      image: '/arrival/arrival-7.jpg',
     },
     {
       title: 'Urban Shirts',
-      image: '/arrival-6.jpg',
+      image: '/arrival/arrival-6.jpg',
     },
     {
       title: 'Composite Shirts',
-      image: '/arrival-7.jpg',
+      image: '/arrival/arrival-7.jpg',
     },
     // Add more dealcard data objects here
   ];
@@ -43,7 +43,7 @@ export function Arrivals() {
     <Carousel className="w-full max-w-7xl m-20">
       <h2 className="text-2xl font-bold mb-8 flex">
         <span className="bg-blue-500 h-8 w-2 mr-4"></span>
-        New Arrival
+        New Arrivals
       </h2>
       <CarouselContent className="-ml-1">
         {arrivalsData.map((arrival, index) => (
@@ -52,8 +52,8 @@ export function Arrivals() {
               <Image
                 src={arrival.image}
                 alt={arrival.title}
-                width={500}
-                height={500}
+                width={400}
+                height={275}
                 className="rounded-lg transition duration-300 hover:scale-[102%]"
               />
               <h3 className="text-lg font-semibold">{arrival.title}</h3>

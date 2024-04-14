@@ -3,7 +3,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { fonts } from '@/app/utils/fonts';
 import { Button } from './button';
 
