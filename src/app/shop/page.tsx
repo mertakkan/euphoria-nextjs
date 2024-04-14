@@ -7,6 +7,7 @@ import SavingZone from '../components/ui/SavingZone';
 import ShopLargeCard from '../components/ui/ShopLargeCard';
 import Categories from '../components/ui/Categories';
 import TopBrands from '../components/ui/TopBrands';
+import Limelight from '../components/ui/Limelight';
 
 export default function ShopPage() {
   return (
@@ -26,6 +27,7 @@ export default function ShopPage() {
       <div className="m-28">
         <TopBrands />
       </div>
+      <Limelight />
     </main>
   );
 }
