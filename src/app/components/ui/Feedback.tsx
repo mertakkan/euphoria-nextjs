@@ -28,17 +28,23 @@ const reviews = [
 
 const Feedback = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3">
-      {reviews.map((review, index) => (
-        <ReviewCard
-          key={index}
-          username={review.username}
-          comment={review.comment}
-          stars={review.stars}
-          image={review.image}
-        />
-      ))}
-    </div>
+    <>
+      <h2 className="text-2xl font-bold mb-8 flex gap-4 ml-16 mt-24">
+        <span className="bg-blue-500 h-8 w-2"></span>
+        Feedback
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {reviews.map((review, index) => (
+          <ReviewCard
+            key={index}
+            username={review.username}
+            comment={review.comment}
+            stars={review.stars}
+            image={review.image}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

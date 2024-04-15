@@ -19,7 +19,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   const partialStar = starRating - fullStars;
 
   return (
-    <div className="bg-white border border-slate-400 rounded-lg py-8 px-6 m-20 mt-32">
+    <div className="bg-white border border-slate-400 rounded-lg py-8 px-6 mx-16 mb-20">
       <div className="flex items-center justify-between mb-10">
         <div className="flex items-center">
           <Image
