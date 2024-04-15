@@ -8,6 +8,7 @@ import ShopLargeCard from '../components/ui/ShopLargeCard';
 import Categories from '../components/ui/Categories';
 import TopBrands from '../components/ui/TopBrands';
 import Limelight from '../components/ui/Limelight';
+import Feedback from '../components/ui/Feedback';
 
 export default function ShopPage() {
   return (
@@ -28,6 +29,7 @@ export default function ShopPage() {
         <TopBrands />
       </div>
       <Limelight />
+      <Feedback />
     </main>
   );
 }
