@@ -16,30 +16,40 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
   const starRating = parseFloat(stars);
   const fullStars = Math.floor(starRating);
-  const hasHalfStar = starRating - fullStars >= 0.5;
+  const partialStar = starRating - fullStars;
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white border border-slate-400 rounded-lg py-8 px-6 m-20 mt-32">
+      <div className="flex items-center justify-between mb-10">
         <div className="flex items-center">
           <Image
             src={image}
             alt={username}
-            width={48}
-            height={48}
+            width={70}
+            height={70}
             className="rounded-full mr-4"
           />
-          <h3 className={`font-bold ${fonts.inter}`}>{username}</h3>
+          <h3 className={`font-bold ${fonts.inter} ml-10`}>{username}</h3>
         </div>
         <div className="flex items-center">
           {[...Array(fullStars)].map((_, i) => (
-            <span key={i} className="text-yellow-400">
+            <span key={i} className="text-yellow-400 text-3xl">
               &#9733;
             </span>
           ))}
-          {hasHalfStar && <span className="text-yellow-400">&#9734;</span>}
-          {[...Array(5 - fullStars - (hasHalfStar ? 1 : 0))].map((_, i) => (
-            <span key={i} className="text-gray-300">
+          {partialStar > 0 && (
+            <span className="relative inline-block text-3xl">
+              <span
+                className="text-yellow-400 absolute top-0 left-0 overflow-hidden"
+                style={{ width: `${partialStar * 100}%` }}
+              >
+                &#9733;
+              </span>
+              <span className="text-gray-300">&#9733;</span>
+            </span>
+          )}
+          {[...Array(5 - fullStars - (partialStar > 0 ? 1 : 0))].map((_, i) => (
+            <span key={i} className="text-gray-300 text-3xl">
               &#9733;
             </span>
           ))}
