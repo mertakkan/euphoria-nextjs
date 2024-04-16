@@ -24,7 +24,7 @@ const Slider = React.forwardRef<
       onValueChange={setValues}
       {...props}
     >
-      <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+      <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-slate-300 dark:bg-slate-800">
         <SliderPrimitive.Range className="absolute h-full bg-slate-900 dark:bg-slate-50" />
       </SliderPrimitive.Track>
 
