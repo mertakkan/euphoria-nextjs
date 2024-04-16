@@ -4,9 +4,7 @@ import Footer from './components/ui/Footer';
 import Head from 'next/head';
 import './styles/globals.css';
 import type { ReactNode } from 'react';
-import { NextUIProvider } from '@nextui-org/react';
 import { Metadata } from 'next';
-import { Providers } from './providers';
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -22,11 +20,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <head>{/* SEO */}</head>
       <body>
-        <Providers>
-          <Navbar />
-          {children}
-          <Footer />
-        </Providers>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

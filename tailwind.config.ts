@@ -4,8 +4,6 @@ const {
   default: flattenColorPalette,
 } = require('tailwindcss/lib/util/flattenColorPalette');
 
-const { nextui } = require('@nextui-org/react');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -15,13 +13,12 @@ module.exports = {
 
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   theme: {
     extend: {},
   },
-  plugins: [addVariablesForColors, nextui()],
+  plugins: [addVariablesForColors],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
