@@ -1,9 +1,9 @@
-import Sidemenu from '../components/ui/Sidemenu';
+import ProductFilter from '../components/ui/ProductFilter';
 
 export default function womenPage() {
   return (
     <main>
-      <Sidemenu />
+      <ProductFilter />
     </main>
   );
 }

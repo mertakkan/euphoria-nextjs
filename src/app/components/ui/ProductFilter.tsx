@@ -1,3 +1,5 @@
+//src\app\components\ui\ProductFilter.tsx
+
 'use client';
 
 import Image from 'next/legacy/image';
@@ -12,10 +14,10 @@ import { RangeSlider } from './RangeSlider';
 
 const defaultContent = 'THIS IS AN ACCORDION ITEM';
 
-const Sidemenu = () => {
+const ProductFilter = () => {
   return (
     <div className={`${fonts.inter} w-1/6`}>
-      <Accordion type="single" collapsible className="w-full">
+      <Accordion type="multiple" className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent className="w-full flex justify-center">
@@ -32,8 +34,7 @@ const Sidemenu = () => {
         <AccordionItem value="item-3">
           <AccordionTrigger>Is it animated?</AccordionTrigger>
           <AccordionContent>
-            Yes. It&apos;s animated by default, but you can disable it if you
-            prefer.
+            Yes! You can animate the Accordion with CSS or JavaScript.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -41,4 +42,4 @@ const Sidemenu = () => {
   );
 };
 
-export default Sidemenu;
+export default ProductFilter;
