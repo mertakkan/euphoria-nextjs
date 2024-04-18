@@ -13,6 +13,7 @@ import {
 import { RangeSlider } from './RangeSlider';
 import { Button } from './button';
 import { SelectedFilters } from '../../types';
+import { X } from 'lucide-react';
 
 const categories = [
   { title: 'Tops' },
@@ -61,10 +62,20 @@ const dressStyles = [
 interface ProductFilterProps {
   onFilterChange: (filterType: keyof SelectedFilters, value: any) => void;
   selectedFilters: SelectedFilters;
-  onClearFilters: () => void;
 }
 
-const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
+const ProductFilter = ({
+  onFilterChange,
+  selectedFilters,
+}: ProductFilterProps) => {
+  const handleClearFilters = () => {
+    onFilterChange('categories', []);
+    onFilterChange('priceRange', [0, 1000]);
+    onFilterChange('colors', []);
+    onFilterChange('sizes', []);
+    onFilterChange('dressStyles', []);
+  };
+
   const handleCategoryClick = (category: string) => {
     onFilterChange('categories', category);
   };
@@ -90,7 +101,6 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
       <Accordion type="multiple" className="w-full" defaultValue={['item-1']}>
         <AccordionItem value="item-1" disabled>
           <AccordionTrigger>
-            {' '}
             <span>Filter</span>
           </AccordionTrigger>
           <AccordionContent className="w-full flex flex-col">
@@ -100,7 +110,11 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
                 value={`item-${category.title.toLowerCase().replace(' ', '-')}`}
               >
                 <button
-                  className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
+                  className={`text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium ${
+                    selectedFilters.categories.includes(category.title)
+                      ? 'opacity-50'
+                      : ''
+                  }`}
                   onClick={() => handleCategoryClick(category.title)}
                 >
                   {category.title}
@@ -122,7 +136,13 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
               {colors.map((color, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <button
-                    className={`w-8 h-8 rounded-full border hover:border-4 hover:border-gray-300 ${color.value}`}
+                    className={`w-8 h-8 rounded-full border hover:border-4 hover:border-gray-300 ${
+                      color.value
+                    } ${
+                      selectedFilters.colors.includes(color.name)
+                        ? 'border-4 border-black'
+                        : ''
+                    }`}
                     onClick={() => handleColorClick(color.name)}
                   ></button>
                   <span className="text-xs mt-1">{color.name}</span>
@@ -139,7 +159,11 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
                 <div key={index} className="flex justify-center">
                   <Button
                     variant="category"
-                    className="border-gray-300 rounded-xl"
+                    className={`border-gray-300 rounded-xl ${
+                      selectedFilters.sizes.includes(size.name)
+                        ? 'bg-black text-white'
+                        : ''
+                    }`}
                     onClick={() => handleSizeClick(size.name)}
                   >
                     {size.name}
@@ -158,7 +182,11 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
                 value={`item-${style.name.toLowerCase().replace(' ', '-')}`}
               >
                 <button
-                  className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
+                  className={`text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium ${
+                    selectedFilters.dressStyles.includes(style.name)
+                      ? 'opacity-50'
+                      : ''
+                  }`}
                   onClick={() => handleDressStyleClick(style.name)}
                 >
                   {style.name}
@@ -166,6 +194,15 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
               </AccordionItem>
             ))}
           </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-clear">
+          <Button
+            variant="destructive"
+            className="mt-4 flex items-center justify-center"
+            onClick={handleClearFilters}
+          >
+            <X className="mr-2 h-4 w-4" /> Clear Filters
+          </Button>
         </AccordionItem>
       </Accordion>
     </div>

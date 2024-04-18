@@ -16,7 +16,7 @@ export default function womenPage() {
 
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
     categories: [],
-    priceRange: [0, 100],
+    priceRange: [0, 1000],
     colors: [],
     sizes: [],
     dressStyles: [],
@@ -49,7 +49,10 @@ export default function womenPage() {
   return (
     <main>
       <div className="flex">
-        <ProductFilter onFilterChange={handleFilterChange} />
+        <ProductFilter
+          onFilterChange={handleFilterChange}
+          selectedFilters={selectedFilters}
+        />
         <WomenClothing selectedFilters={selectedFilters} />
       </div>
     </main>
