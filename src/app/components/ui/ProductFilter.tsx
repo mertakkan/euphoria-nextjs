@@ -11,8 +11,8 @@ import {
   AccordionTrigger,
 } from './accordion';
 import { RangeSlider } from './RangeSlider';
-import { SlidersVertical } from 'lucide-react';
 import { Button } from './button';
+import { SelectedFilters } from '../../types';
 
 const categories = [
   { title: 'Tops' },
@@ -58,7 +58,33 @@ const dressStyles = [
   { name: 'Elegant' },
 ];
 
-const ProductFilter = () => {
+interface ProductFilterProps {
+  onFilterChange: (filterType: keyof SelectedFilters, value: any) => void;
+  selectedFilters: SelectedFilters;
+  onClearFilters: () => void;
+}
+
+const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
+  const handleCategoryClick = (category: string) => {
+    onFilterChange('categories', category);
+  };
+
+  const handlePriceChange = (priceRange: number[]) => {
+    onFilterChange('priceRange', priceRange);
+  };
+
+  const handleColorClick = (color: string) => {
+    onFilterChange('colors', color);
+  };
+
+  const handleSizeClick = (size: string) => {
+    onFilterChange('sizes', size);
+  };
+
+  const handleDressStyleClick = (dressStyle: string) => {
+    onFilterChange('dressStyles', dressStyle);
+  };
+
   return (
     <div className={`${fonts.inter} md:w-1/6 m-20 self-start border p-3`}>
       <Accordion type="multiple" className="w-full" defaultValue={['item-1']}>
@@ -73,7 +99,10 @@ const ProductFilter = () => {
                 key={index}
                 value={`item-${category.title.toLowerCase().replace(' ', '-')}`}
               >
-                <button className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium">
+                <button
+                  className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
+                  onClick={() => handleCategoryClick(category.title)}
+                >
                   {category.title}
                 </button>
               </AccordionItem>
@@ -83,7 +112,7 @@ const ProductFilter = () => {
         <AccordionItem value="item-2">
           <AccordionTrigger>Price</AccordionTrigger>
           <AccordionContent className="w-full flex justify-center">
-            <RangeSlider />
+            <RangeSlider onChange={handlePriceChange} />
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
@@ -94,6 +123,7 @@ const ProductFilter = () => {
                 <div key={index} className="flex flex-col items-center">
                   <button
                     className={`w-8 h-8 rounded-full border hover:border-4 hover:border-gray-300 ${color.value}`}
+                    onClick={() => handleColorClick(color.name)}
                   ></button>
                   <span className="text-xs mt-1">{color.name}</span>
                 </div>
@@ -110,6 +140,7 @@ const ProductFilter = () => {
                   <Button
                     variant="category"
                     className="border-gray-300 rounded-xl"
+                    onClick={() => handleSizeClick(size.name)}
                   >
                     {size.name}
                   </Button>
@@ -126,7 +157,10 @@ const ProductFilter = () => {
                 key={index}
                 value={`item-${style.name.toLowerCase().replace(' ', '-')}`}
               >
-                <button className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium">
+                <button
+                  className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
+                  onClick={() => handleDressStyleClick(style.name)}
+                >
                   {style.name}
                 </button>
               </AccordionItem>

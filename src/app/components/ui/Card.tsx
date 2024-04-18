@@ -1,4 +1,5 @@
 // src\app\components\ui\Card.tsx
+
 import Image from 'next/legacy/image';
 import { Button } from './button';
 import { fonts } from '@/app/utils/fonts';
@@ -7,7 +8,7 @@ import { Heart } from 'lucide-react';
 interface CardProps {
   title: string;
   text: string;
-  price: string;
+  price: number;
   image: string;
 }
 
@@ -41,7 +42,7 @@ const Card = ({ title, text, price, image }: CardProps) => {
         </div>
 
         <Button variant="outline" size="sm" className=" bg-slate-50">
-          <p className="text-lg font-medium">{price}</p>
+          <p className="text-lg font-medium">${price.toFixed(2)}</p>
         </Button>
       </div>
     </div>

@@ -8,25 +8,25 @@ const limelight = [
   {
     title: 'Black T-Shirt',
     text: "Arman's Brand",
-    price: '$29.90',
+    price: 29.9,
     image: '/limelight/limelight-1.jpg',
   },
   {
     title: 'Cream Purse',
     text: "Dilay's Brand",
-    price: '$59.90',
+    price: 59.9,
     image: '/limelight/limelight-2.jpg',
   },
   {
     title: 'Ivory Coat',
     text: "MMA's Brand",
-    price: '$69.90',
+    price: 69.9,
     image: '/limelight/limelight-3.jpg',
   },
   {
     title: 'Print Hat',
     text: "Eray's Brand",
-    price: '$19.90',
+    price: 19.9,
     image: '/limelight/limelight-4.jpg',
   },
 ];
@@ -43,13 +43,7 @@ const Limelight = () => {
           className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[500px] gap-16`}
         >
           {limelight.map((item, k) => (
-            <Card
-              key={k}
-              title={item.title}
-              text={item.text}
-              price={item.price}
-              image={item.image}
-            />
+            <Card key={k} {...item} />
           ))}
         </div>
       </div>

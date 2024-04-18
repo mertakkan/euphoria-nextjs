@@ -1,85 +1,172 @@
+//src\app\components\ui\WomenClothing.tsx
+
 import Image from 'next/legacy/image';
 import { Button } from './button';
 import { fonts } from '@/app/utils/fonts';
 import { Heart } from 'lucide-react';
 import Card from './Card';
 
-const women_clothes = [
+interface WomenClothingProps {
+  selectedFilters: {
+    categories: string[];
+    priceRange: number[];
+    colors: string[];
+    sizes: string[];
+    dressStyles: string[];
+  };
+}
+
+const clothes = [
   {
     title: 'Black T-Shirt',
     text: "Arman's Brand",
-    price: '$29.90',
+    price: 29.9,
     image: '/women-clothes/women-clothes-1.jpg',
+    category: 'Printed T-shirts',
+    color: 'Black',
+    size: ['S', 'M', 'L'],
+    dressStyle: 'Casual',
   },
   {
-    title: 'Cream Purse',
+    title: 'White Top',
     text: "Dilay's Brand",
-    price: '$59.90',
+    price: 39.9,
     image: '/women-clothes/women-clothes-2.jpg',
+    category: 'Tops',
+    color: 'White',
+    size: ['S', 'M', 'L'],
+    dressStyle: 'Casual',
   },
   {
-    title: 'Ivory Coat',
+    title: 'White Puffer Coat',
     text: "MMA's Brand",
-    price: '$69.90',
+    price: 69.9,
     image: '/women-clothes/women-clothes-3.jpg',
+    category: 'Tops',
+    color: 'White',
+    size: ['S', 'M', 'L'],
+    dressStyle: 'Sports',
   },
   {
-    title: 'Print Hat',
+    title: 'Red Jeans',
     text: "Eray's Brand",
-    price: '$19.90',
+    price: 49.9,
     image: '/women-clothes/women-clothes-4.jpg',
+    category: 'Jeans',
+    color: 'Red',
+    size: ['S', 'M', 'L'],
+    dressStyle: 'Casual',
   },
   {
-    title: 'Tailor Shirt',
+    title: 'White Tailor Shirt',
     text: 'Giovanni',
-    price: '$59.90',
+    price: 59.9,
     image: '/women-clothes/women-clothes-5.jpg',
+    category: 'Tops',
+    color: 'White',
+    size: ['S', 'M', 'L', 'XL', 'XS'],
+    dressStyle: 'Business',
   },
   {
     title: 'Leather Jacket',
-    text: 'Azorra',
-    price: '$59.90',
+    text: 'Azarro',
+    price: 59.9,
     image: '/women-clothes/women-clothes-6.jpg',
+    category: 'Tops',
+    color: 'Black',
+    size: ['S', 'M', 'L', 'XL', 'XS'],
+    dressStyle: 'Casual',
   },
   {
     title: 'White Dress',
     text: 'Leveral Brand',
-    price: '$89.90',
+    price: 89.9,
     image: '/women-clothes/women-clothes-7.jpg',
+    category: 'Tops',
+    color: 'White',
+    size: ['S', 'M', 'L', 'XL', 'XS'],
+    dressStyle: 'Formal',
   },
   {
     title: 'Designer Top',
     text: 'Cutiez',
-    price: '$39.90',
+    price: 39.9,
     image: '/women-clothes/women-clothes-8.jpg',
+    category: 'Tops',
+    color: 'White',
+    size: ['S', 'M', 'L', 'XL', 'XS'],
+    dressStyle: 'Elegant',
   },
   {
-    title: 'Gray Designer Shirt',
-    text: 'Halfmoons',
-    price: '$49.90',
+    title: 'White Designer Shirt',
+    text: 'Cutiez',
+    price: 39.9,
     image: '/women-clothes/women-clothes-9.jpg',
+    category: 'Tops',
+    color: 'White',
+    size: ['S', 'M', 'L', 'XL', 'XS'],
+    dressStyle: 'Elegant',
   },
   {
     title: 'Multicolor Sweater',
     text: 'Olagra',
-    price: '$39.90',
+    price: 39.9,
     image: '/women-clothes/women-clothes-10.jpg',
+    category: 'Full sleeve T-shirts',
+    color: 'Navy',
+    size: ['S', 'M', 'L', 'XL', 'XS', '2XL'],
+    dressStyle: 'Sports',
   },
   {
     title: 'Purple Track Shirt',
     text: 'Sportiff',
-    price: '$29.90',
+    price: 29.9,
     image: '/women-clothes/women-clothes-11.jpg',
+    category: 'Plain T-shirts',
+    color: 'Purple',
+    size: ['S', 'M', 'L', 'XL', 'XS', '2XL', 'XXS'],
+    dressStyle: 'Sports',
   },
   {
     title: 'White Puff Jacket',
     text: 'Zelda',
-    price: '$69.90',
+    price: 169.9,
     image: '/women-clothes/women-clothes-12.jpg',
+    category: 'Kurti',
+    color: 'White',
+    size: ['S', 'M', 'L', 'XL', 'XS', '2XL', 'XXS'],
+    dressStyle: 'Casual',
   },
 ];
 
-const WomenClothing = () => {
+const WomenClothing = ({ selectedFilters }: WomenClothingProps) => {
+  const filteredClothes = clothes.filter((cloth) => {
+    const isInCategories =
+      selectedFilters.categories.length === 0 ||
+      selectedFilters.categories.includes(cloth.category);
+    const isInPriceRange =
+      cloth.price >= selectedFilters.priceRange[0] &&
+      cloth.price <= selectedFilters.priceRange[1];
+    const isInColors =
+      selectedFilters.colors.length === 0 ||
+      selectedFilters.colors.includes(cloth.color);
+    const isInSizes =
+      selectedFilters.sizes.length === 0 ||
+      cloth.size.some((size) => selectedFilters.sizes.includes(size));
+
+    const isInDressStyles =
+      selectedFilters.dressStyles.length === 0 ||
+      selectedFilters.dressStyles.includes(cloth.dressStyle);
+
+    return (
+      isInCategories &&
+      isInPriceRange &&
+      isInColors &&
+      isInSizes &&
+      isInDressStyles
+    );
+  });
+
   return (
     <>
       <div className="p-20 w-full">
@@ -87,14 +174,8 @@ const WomenClothing = () => {
         <div
           className={`${fonts.inter} grid md:grid-cols-3 auto-rows-[500px] gap-16`}
         >
-          {women_clothes.map((item, k) => (
-            <Card
-              key={k}
-              title={item.title}
-              text={item.text}
-              price={item.price}
-              image={item.image}
-            />
+          {filteredClothes.map((cloth, index) => (
+            <Card key={index} {...cloth} />
           ))}
         </div>
       </div>
