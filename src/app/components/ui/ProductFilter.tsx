@@ -12,6 +12,7 @@ import {
 } from './accordion';
 import { RangeSlider } from './RangeSlider';
 import { SlidersVertical } from 'lucide-react';
+import { Button } from './button';
 
 const categories = [
   { title: 'Tops' },
@@ -59,7 +60,7 @@ const dressStyles = [
 
 const ProductFilter = () => {
   return (
-    <div className={`${fonts.inter} w-1/6 mb-40 ml-16 border p-3`}>
+    <div className={`${fonts.inter} md:w-1/6 m-20 self-start border p-3`}>
       <Accordion type="multiple" className="w-full" defaultValue={['item-1']}>
         <AccordionItem value="item-1" disabled>
           <AccordionTrigger>
@@ -103,12 +104,15 @@ const ProductFilter = () => {
         <AccordionItem value="item-4">
           <AccordionTrigger>Size</AccordionTrigger>
           <AccordionContent>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3 p-2">
               {sizes.map((size, index) => (
                 <div key={index} className="flex justify-center">
-                  <button className="text-sm border rounded-xl p-2">
+                  <Button
+                    variant="category"
+                    className="border-gray-300 rounded-xl"
+                  >
                     {size.name}
-                  </button>
+                  </Button>
                 </div>
               ))}
             </div>

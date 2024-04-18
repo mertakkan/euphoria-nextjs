@@ -40,7 +40,7 @@ const Card = ({ title, text, price, image }: CardProps) => {
           <p className="text-lg">{text}</p>
         </div>
 
-        <Button variant="outline" size="sm" className="bg-gray-100/75">
+        <Button variant="outline" size="sm" className=" bg-slate-50">
           <p className="text-lg font-medium">{price}</p>
         </Button>
       </div>

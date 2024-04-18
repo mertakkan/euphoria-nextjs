@@ -18,7 +18,7 @@ const Slider = React.forwardRef<
       defaultValue={[0, 1000]}
       ref={ref}
       className={cn(
-        'relative flex w-[80%] touch-none select-none items-center',
+        'relative flex w-[70%] touch-none select-none items-center',
         className
       )}
       onValueChange={setValues}

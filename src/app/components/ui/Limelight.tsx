@@ -4,7 +4,7 @@ import { fonts } from '@/app/utils/fonts';
 import { Heart } from 'lucide-react';
 import Card from './Card';
 
-const forMen = [
+const limelight = [
   {
     title: 'Black T-Shirt',
     text: "Arman's Brand",
@@ -42,7 +42,7 @@ const Limelight = () => {
         <div
           className={`${fonts.inter} grid md:grid-cols-4 auto-rows-[500px] gap-16`}
         >
-          {forMen.map((item, k) => (
+          {limelight.map((item, k) => (
             <Card
               key={k}
               title={item.title}
