@@ -1,6 +1,6 @@
 //src/app/components/ui/Navbar
 'use client';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { fonts } from '@/app/utils/fonts';
 import { Button } from './button';
@@ -100,9 +100,9 @@ function NavbarContent() {
                 </button>
               </div>
             ) : (
-              <div className="ml-4 w-full">
+              <div className="ml-4 w-[200px]">
                 <Link href="/auth/signin">
-                  <Button>Sign In</Button>
+                  <Button className="w-1/2">Sign In</Button>
                 </Link>
               </div>
             )}
