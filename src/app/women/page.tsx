@@ -26,24 +26,35 @@ export default function womenPage() {
     filterType: keyof SelectedFilters,
     value: string | number[]
   ) => {
-    setSelectedFilters((prevFilters) => {
-      if (filterType === 'priceRange') {
-        return {
-          ...prevFilters,
-          [filterType]: value as number[],
-        };
-      } else {
-        const currentValues = prevFilters[filterType] as string[];
-        const updatedValues = currentValues.includes(value as string)
-          ? currentValues.filter((item) => item !== value)
-          : [...currentValues, value as string];
+    if (Array.isArray(value) && value.length === 0) {
+      // Clear all filters
+      setSelectedFilters({
+        categories: [],
+        priceRange: [0, 1000],
+        colors: [],
+        sizes: [],
+        dressStyles: [],
+      });
+    } else {
+      setSelectedFilters((prevFilters) => {
+        if (filterType === 'priceRange') {
+          return {
+            ...prevFilters,
+            [filterType]: value as number[],
+          };
+        } else {
+          const currentValues = prevFilters[filterType] as string[];
+          const updatedValues = currentValues.includes(value as string)
+            ? currentValues.filter((item) => item !== value)
+            : [...currentValues, value as string];
 
-        return {
-          ...prevFilters,
-          [filterType]: updatedValues,
-        };
-      }
-    });
+          return {
+            ...prevFilters,
+            [filterType]: updatedValues,
+          };
+        }
+      });
+    }
   };
 
   return (

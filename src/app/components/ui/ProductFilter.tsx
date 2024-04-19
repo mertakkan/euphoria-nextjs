@@ -198,7 +198,7 @@ const ProductFilter = ({
         <AccordionItem value="item-clear">
           <Button
             variant="destructive"
-            className="mt-4 flex items-center justify-center"
+            className="mt-4 flex items-center justify-center w-5/6"
             onClick={handleClearFilters}
           >
             <X className="mr-2 h-4 w-4" /> Clear Filters
