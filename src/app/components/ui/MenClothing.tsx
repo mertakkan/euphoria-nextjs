@@ -16,7 +16,7 @@ interface MenClothingProps {
   };
 }
 
-const clothes = [
+export const clothes = [
   {
     title: 'Black Jeans',
     text: "Arman's Brand",

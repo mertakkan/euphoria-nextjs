@@ -27,7 +27,7 @@ function NavbarContent() {
       <div className="w-4/5 mx-auto p-2 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/">
+            <Link href="/shop">
               <Image
                 src="/Logo.svg"
                 alt="Euphoria Logo"
@@ -54,18 +54,6 @@ function NavbarContent() {
               className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
             >
               Women
-            </Link>
-            <Link
-              href="/combos"
-              className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
-            >
-              Combos
-            </Link>
-            <Link
-              href="/joggers"
-              className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-md font-medium"
-            >
-              Joggers
             </Link>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">

@@ -4,6 +4,7 @@ import Image from 'next/legacy/image';
 import { Button } from './button';
 import { fonts } from '@/app/utils/fonts';
 import { Heart } from 'lucide-react';
+import Link from 'next/link';
 
 interface CardProps {
   title: string;
@@ -19,13 +20,15 @@ const Card = ({ title, text, price, image }: CardProps) => {
   return (
     <div className={categoryCard}>
       <div className="relative h-full w-full">
-        <Image
-          src={image}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-xl"
-        />
+        <Link href={`/product/${encodeURIComponent(title.toLowerCase())}`}>
+          <Image
+            src={image}
+            alt={title}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-xl"
+          />
+        </Link>
       </div>
       <Button
         variant="outline"
