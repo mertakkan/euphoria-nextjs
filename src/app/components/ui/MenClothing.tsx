@@ -3,7 +3,6 @@
 import Image from 'next/legacy/image';
 import { Button } from './button';
 import { fonts } from '@/app/utils/fonts';
-import { Heart } from 'lucide-react';
 import Card from './Card';
 
 interface MenClothingProps {

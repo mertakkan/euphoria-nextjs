@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { fonts } from '@/app/utils/fonts';
 import { Button } from './button';
 import { signOut, useSession, SessionProvider } from 'next-auth/react';
+import { UserDropdown } from './UserDropdown';
 
 export default function Navbar() {
   return (
@@ -14,13 +15,13 @@ export default function Navbar() {
   );
 }
 
+export const handleSignOut = () => {
+  signOut({ callbackUrl: '/' }); // Redirect to the home page after sign-out
+};
+
 function NavbarContent() {
   const { data: session } = useSession();
   const isLoggedIn = !!session;
-
-  const handleSignOut = () => {
-    signOut({ callbackUrl: '/' }); // Redirect to the home page after sign-out
-  };
 
   return (
     <nav className={`${fonts.inter} font-sans bg-white shadow-md`}>
@@ -80,12 +81,7 @@ function NavbarContent() {
             </div>
             {isLoggedIn ? (
               <div className="ml-4">
-                <button
-                  className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                  onClick={handleSignOut}
-                >
-                  Sign Out
-                </button>
+                <UserDropdown />
               </div>
             ) : (
               <div className="ml-4 w-[200px]">

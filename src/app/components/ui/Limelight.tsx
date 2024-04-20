@@ -12,19 +12,19 @@ const limelight = [
     image: '/limelight/limelight-1.jpg',
   },
   {
-    title: 'Cream Purse',
+    title: 'White Top',
     text: "Dilay's Brand",
     price: 59.9,
     image: '/limelight/limelight-2.jpg',
   },
   {
-    title: 'Ivory Coat',
+    title: 'White Puffer Coat',
     text: "MMA's Brand",
     price: 69.9,
     image: '/limelight/limelight-3.jpg',
   },
   {
-    title: 'Print Hat',
+    title: 'Red Jeans',
     text: "Eray's Brand",
     price: 19.9,
     image: '/limelight/limelight-4.jpg',
