@@ -21,11 +21,7 @@ export function UserDropdown() {
     <div className="flex justify-center gap-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="iconCategory"
-            className="top-4 right-4 rounded-full"
-          >
+          <Button variant="outline" className="rounded-full">
             <ShoppingCart className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -44,11 +40,7 @@ export function UserDropdown() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="iconCategory"
-            className="top-4 right-4 rounded-full"
-          >
+          <Button variant="outline" className="rounded-full">
             <User className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -66,11 +58,7 @@ export function UserDropdown() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="iconCategory"
-            className="top-4 right-4 rounded-full"
-          >
+          <Button variant="outline" className="rounded-full">
             <Heart className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>

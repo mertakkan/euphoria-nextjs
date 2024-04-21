@@ -45,7 +45,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
   return (
     <div className={` ${fonts.inter} px-24 flex justify-center`}>
       <div className="flex gap-10">
-        <div className="relative h-[800px] w-[750px]">
+        <div className="relative h-full w-[750px]">
           <Image
             src={product.image}
             alt={product.title}
