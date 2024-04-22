@@ -18,6 +18,7 @@ interface WomenClothingProps {
 
 export const clothes = [
   {
+    id: '13',
     title: 'Black T-Shirt',
     text: "Arman's Brand",
     price: 29.9,
@@ -28,6 +29,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '14',
     title: 'White Top',
     text: "Dilay's Brand",
     price: 39.9,
@@ -38,6 +40,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '15',
     title: 'White Puffer Coat',
     text: "MMA's Brand",
     price: 69.9,
@@ -48,6 +51,7 @@ export const clothes = [
     dressStyle: 'Sports',
   },
   {
+    id: '16',
     title: 'Red Jeans',
     text: "Eray's Brand",
     price: 49.9,
@@ -58,6 +62,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '17',
     title: 'White Tailor Shirt',
     text: 'Giovanni',
     price: 59.9,
@@ -68,6 +73,7 @@ export const clothes = [
     dressStyle: 'Business',
   },
   {
+    id: '18',
     title: 'Leather Jacket',
     text: 'Azarro',
     price: 59.9,
@@ -78,6 +84,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '19',
     title: 'White Dress',
     text: 'Leveral Brand',
     price: 89.9,
@@ -88,6 +95,7 @@ export const clothes = [
     dressStyle: 'Formal',
   },
   {
+    id: '20',
     title: 'Designer Top',
     text: 'Cutiez',
     price: 39.9,
@@ -98,6 +106,7 @@ export const clothes = [
     dressStyle: 'Elegant',
   },
   {
+    id: '21',
     title: 'White Designer Shirt',
     text: 'Cutiez',
     price: 39.9,
@@ -108,6 +117,7 @@ export const clothes = [
     dressStyle: 'Elegant',
   },
   {
+    id: '22',
     title: 'Multicolor Sweater',
     text: 'Olagra',
     price: 39.9,
@@ -118,6 +128,7 @@ export const clothes = [
     dressStyle: 'Sports',
   },
   {
+    id: '23',
     title: 'Purple Track Shirt',
     text: 'Sportiff',
     price: 29.9,
@@ -128,6 +139,7 @@ export const clothes = [
     dressStyle: 'Sports',
   },
   {
+    id: '24',
     title: 'White Puff Jacket',
     text: 'Zelda',
     price: 169.9,

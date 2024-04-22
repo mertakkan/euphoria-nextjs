@@ -1,14 +1,15 @@
 // src\app\product\[slug]\page.tsx
 'use client';
-import { useRouter } from 'next/router';
 import Image from 'next/legacy/image';
 import { Button } from '@/app/components/ui/button';
 import { fonts } from '@/app/utils/fonts';
 import { ShoppingCart } from 'lucide-react';
 import { clothes as womenClothes } from '@/app/components/ui/WomenClothing';
-import { clothes as menClothes } from '@/app/components/ui/MenClothing'; // Import men's clothes array
+import { clothes as menClothes } from '@/app/components/ui/MenClothing';
+import { mutate } from 'swr';
 
 interface Cloth {
+  id: string;
   title: string;
   text: string;
   price: number;
@@ -25,7 +26,7 @@ interface ProductPageProps {
   };
 }
 
-const ProductPage = ({ params }: ProductPageProps) => {
+const ProductPage = async ({ params }: ProductPageProps) => {
   const { slug } = params;
 
   const product =
@@ -41,6 +42,32 @@ const ProductPage = ({ params }: ProductPageProps) => {
   if (!product) {
     return <div>Product not found</div>;
   }
+
+  const handleAddToCart = async () => {
+    try {
+      const response = await fetch('/api/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: product.id,
+          title: product.title,
+          image: product.image,
+          quantity: 1,
+        }),
+      });
+
+      if (response.ok) {
+        // Update the user data to reflect the new cart item
+        mutate('/api/user');
+      } else {
+        // Handle error
+      }
+    } catch (error) {
+      // Handle error
+    }
+  };
 
   return (
     <div className={` ${fonts.inter} px-24 flex justify-center`}>
@@ -72,7 +99,10 @@ const ProductPage = ({ params }: ProductPageProps) => {
           </div>
           <p className="mb-4 mt-4">Colour: {product.color}</p>
           <div className="flex gap-10 items-center mt-12">
-            <Button className=" flex items-center justify-center w-1/3">
+            <Button
+              className="flex items-center justify-center w-1/3"
+              onClick={handleAddToCart}
+            >
               <ShoppingCart className="h-4 w-4 mr-2" />
               Add to Cart
             </Button>

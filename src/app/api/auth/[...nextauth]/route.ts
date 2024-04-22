@@ -2,11 +2,9 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcrypt';
+import { prisma } from '@/app/lib/prisma';
+import bcrypt from 'bcryptjs';
 import { SessionStrategy } from 'next-auth';
-
-const prisma = new PrismaClient();
 
 export const authOptions = {
   session: {

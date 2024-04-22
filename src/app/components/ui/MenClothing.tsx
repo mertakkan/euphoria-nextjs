@@ -17,6 +17,7 @@ interface MenClothingProps {
 
 export const clothes = [
   {
+    id: '1',
     title: 'Black Jeans',
     text: "Arman's Brand",
     price: 49.9,
@@ -27,6 +28,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '2',
     title: 'Orange Designer Shirt',
     text: "Dilay's Brand",
     price: 59.9,
@@ -37,6 +39,7 @@ export const clothes = [
     dressStyle: 'Elegant',
   },
   {
+    id: '3',
     title: 'White Elegant Shirt',
     text: "MMA's Brand",
     price: 69.9,
@@ -47,6 +50,7 @@ export const clothes = [
     dressStyle: 'Elegant',
   },
   {
+    id: '4',
     title: 'White Plain Shirt',
     text: "Eray's Brand",
     price: 39.9,
@@ -57,6 +61,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '5',
     title: 'White Printed T-Shirt',
     text: 'Giovanni',
     price: 59.9,
@@ -67,6 +72,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '6',
     title: 'Sports Jacket',
     text: 'Azarro',
     price: 59.9,
@@ -77,6 +83,7 @@ export const clothes = [
     dressStyle: 'Sports',
   },
   {
+    id: '7',
     title: 'Navy Top',
     text: 'Leveral Brand',
     price: 89.9,
@@ -87,6 +94,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '8',
     title: 'Navy Suit',
     text: 'Cutiez',
     price: 39.9,
@@ -97,6 +105,7 @@ export const clothes = [
     dressStyle: 'Business',
   },
   {
+    id: '9',
     title: 'Purple Top',
     text: 'Cutiez',
     price: 39.9,
@@ -107,6 +116,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '10',
     title: 'Red Sweater Top',
     text: 'Olagra',
     price: 39.9,
@@ -117,6 +127,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '11',
     title: 'Printed Jaguar T-Shirt',
     text: 'Jaguaro',
     price: 29.9,
@@ -127,6 +138,7 @@ export const clothes = [
     dressStyle: 'Casual',
   },
   {
+    id: '12',
     title: 'Yellow-Black Shirt',
     text: 'Zelda',
     price: 69.9,

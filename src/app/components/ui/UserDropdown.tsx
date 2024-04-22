@@ -1,4 +1,14 @@
+//src\app\components\ui\UserDropdown.tsx
+
+'use client';
+
+import { useEffect } from 'react';
+import useSWR from 'swr';
 import { Button } from './button';
+import { prisma } from '@/app/lib/prisma';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +26,20 @@ import {
 import { ShoppingCart, User, Heart } from 'lucide-react';
 import { handleSignOut } from './Navbar';
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 export function UserDropdown() {
+  const { data: user, error } = useSWR('/api/user', fetcher);
+
+  if (error) {
+    // Handle error state
+    return <div>Error loading user data</div>;
+  }
+
+  if (!user) {
+    // Handle loading state or unauthenticated state
+    return null;
+  }
   return (
     <div className="flex justify-center gap-2">
       <DropdownMenu>
@@ -26,15 +49,22 @@ export function UserDropdown() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40">
-          <DropdownMenuItem>
-            <p>A bunch of items 1</p>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <p>A bunch of items 2</p>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <p>A bunch of items 3</p>
-          </DropdownMenuItem>
+          {user.cart?.items?.length > 0 ? (
+            user.cart.items.map((item: any) => (
+              <DropdownMenuItem key={item.id}>
+                <div className="flex items-center">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-8 h-8 mr-2"
+                  />
+                  <p>{item.title}</p>
+                </div>
+              </DropdownMenuItem>
+            ))
+          ) : (
+            <DropdownMenuItem>No items in the cart</DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 
