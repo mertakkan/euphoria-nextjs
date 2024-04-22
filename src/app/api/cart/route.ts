@@ -51,6 +51,7 @@ export async function POST(request: NextRequest) {
       productId,
       title: product.title,
       image: product.image,
+      price: product.price,
       quantity,
     },
   });

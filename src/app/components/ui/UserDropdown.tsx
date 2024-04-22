@@ -3,7 +3,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import { Button } from './button';
 import { prisma } from '@/app/lib/prisma';
 import { getServerSession } from 'next-auth/next';
@@ -28,6 +28,27 @@ import { handleSignOut } from './Navbar';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
+const handleQuantityChange = async (itemId: string, newQuantity: number) => {
+  if (newQuantity === 0) {
+    // Delete the item from the cart if quantity becomes 0
+    await fetch(`/api/cart/${itemId}`, {
+      method: 'DELETE',
+    });
+  } else {
+    // Update the quantity of the cart item
+    await fetch(`/api/cart/${itemId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ quantity: newQuantity }),
+    });
+  }
+
+  // Update the user data to reflect the changes in the cart
+  mutate('/api/user');
+};
+
 export function UserDropdown() {
   const { data: user, error } = useSWR('/api/user', fetcher);
 
@@ -48,17 +69,43 @@ export function UserDropdown() {
             <ShoppingCart className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-40">
+        <DropdownMenuContent className="w-96 max-h-96 overflow-y-auto">
           {user.cart?.items?.length > 0 ? (
             user.cart.items.map((item: any) => (
               <DropdownMenuItem key={item.id}>
-                <div className="flex items-center">
+                <div className="flex justify-between items-center w-full">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-8 h-8 mr-2"
+                    className="w-16 h-20 rounded-md mr-4"
                   />
-                  <p>{item.title}</p>
+                  <div className="flex-grow">
+                    <p className="text-lg font-medium">{item.title}</p>
+                    <p className="text-xs text-gray-500">
+                      ${item.quantity * item.price.toFixed(2)}
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <button
+                      className="text-black flex justify-center items-center w-6 h-6 text-lg px-1 border rounded-full hover:bg-gray-600 hover:text-white focus:outline-none"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleQuantityChange(item.id, item.quantity - 1);
+                      }}
+                    >
+                      -
+                    </button>
+                    <span className="mx-3 text-lg">{item.quantity}</span>
+                    <button
+                      className="text-black flex justify-center items-center w-6 h-6 text-lg px-1 border rounded-full hover:bg-gray-600 hover:text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleQuantityChange(item.id, item.quantity + 1);
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </DropdownMenuItem>
             ))
