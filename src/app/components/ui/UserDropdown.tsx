@@ -25,6 +25,8 @@ import {
 } from './dropdown-menu';
 import { ShoppingCart, User, Heart } from 'lucide-react';
 import { handleSignOut } from './Navbar';
+import router from 'next/router';
+import Link from 'next/link';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -69,49 +71,58 @@ export function UserDropdown() {
             <ShoppingCart className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-96 max-h-96 overflow-y-auto">
-          {user.cart?.items?.length > 0 ? (
-            user.cart.items.map((item: any) => (
-              <DropdownMenuItem key={item.id}>
-                <div className="flex justify-between items-center w-full">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-16 h-20 rounded-md mr-4"
-                  />
-                  <div className="flex-grow">
-                    <p className="text-lg font-medium">{item.title}</p>
-                    <p className="text-xs text-gray-500">
-                      ${item.quantity * item.price.toFixed(2)}
-                    </p>
+        <DropdownMenuContent className="w-96">
+          <div className="max-h-80 overflow-y-auto">
+            {user.cart?.items?.length > 0 ? (
+              user.cart.items.map((item: any) => (
+                <DropdownMenuItem key={item.id}>
+                  <div className="flex justify-between items-center w-full">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-16 h-20 rounded-md mr-4"
+                    />
+                    <div className="flex-grow">
+                      <p className="text-lg font-medium">{item.title}</p>
+                      <p className="text-xs text-gray-500">
+                        ${item.quantity * item.price.toFixed(2)}
+                      </p>
+                    </div>
+                    <div className="flex items-center">
+                      <button
+                        className="text-black flex justify-center items-center w-6 h-6 text-lg px-1 border rounded-full hover:bg-gray-600 hover:text-white focus:outline-none"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleQuantityChange(item.id, item.quantity - 1);
+                        }}
+                      >
+                        -
+                      </button>
+                      <span className="mx-3 text-lg">{item.quantity}</span>
+                      <button
+                        className="text-black flex justify-center items-center w-6 h-6 text-lg px-1 border rounded-full hover:bg-gray-600 hover:text-white"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleQuantityChange(item.id, item.quantity + 1);
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <button
-                      className="text-black flex justify-center items-center w-6 h-6 text-lg px-1 border rounded-full hover:bg-gray-600 hover:text-white focus:outline-none"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleQuantityChange(item.id, item.quantity - 1);
-                      }}
-                    >
-                      -
-                    </button>
-                    <span className="mx-3 text-lg">{item.quantity}</span>
-                    <button
-                      className="text-black flex justify-center items-center w-6 h-6 text-lg px-1 border rounded-full hover:bg-gray-600 hover:text-white"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleQuantityChange(item.id, item.quantity + 1);
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </DropdownMenuItem>
-            ))
-          ) : (
-            <DropdownMenuItem>No items in the cart</DropdownMenuItem>
-          )}
+                </DropdownMenuItem>
+              ))
+            ) : (
+              <DropdownMenuItem>No items in the cart</DropdownMenuItem>
+            )}
+          </div>
+          <div className="mt-4">
+            <Link href="/checkout">
+              <Button variant="default" className="w-full">
+                Checkout
+              </Button>
+            </Link>
+          </div>
         </DropdownMenuContent>
       </DropdownMenu>
 
