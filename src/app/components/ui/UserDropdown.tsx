@@ -5,27 +5,14 @@
 import { useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
 import { Button } from './button';
-import { prisma } from '@/app/lib/prisma';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from './dropdown-menu';
 import { ShoppingCart, User, Heart } from 'lucide-react';
 import { handleSignOut } from './Navbar';
-import router from 'next/router';
 import Link from 'next/link';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
