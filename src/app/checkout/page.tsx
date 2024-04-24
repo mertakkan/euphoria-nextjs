@@ -1,4 +1,5 @@
 // src/app/checkout/page.tsx
+'use client';
 import React from 'react';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
@@ -7,11 +8,14 @@ import Checkout from '@/app/components/ui/Checkout';
 
 interface CartItem {
   id: string;
+  cartId: string;
   productId: string;
   title: string;
   image: string;
   price: number;
   quantity: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface CheckoutPageProps {
@@ -40,11 +44,13 @@ const CheckoutPage: React.FC<CheckoutPageProps> = async () => {
     include: { items: true },
   });
 
-  const cartItems = cart?.items || [];
+  const [cartItems, setCartItems] = React.useState<CartItem[]>(
+    cart?.items || []
+  );
 
   return (
     <div>
-      <Checkout cartItems={cartItems} />
+      <Checkout cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   );
 };

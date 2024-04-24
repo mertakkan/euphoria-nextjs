@@ -58,3 +58,35 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json(cartItem);
 }
+
+export async function GET(request: NextRequest) {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+
+  if (!user) {
+    return NextResponse.json({ error: 'User not found' }, { status: 404 });
+  }
+
+  let cart = await prisma.cart.findUnique({
+    where: { userId: user.id },
+    include: { items: true },
+  });
+
+  if (!cart) {
+    cart = await prisma.cart.create({
+      data: { userId: user.id },
+      include: { items: true },
+    });
+  }
+
+  const cartItems = cart.items;
+
+  return NextResponse.json(cartItems);
+}

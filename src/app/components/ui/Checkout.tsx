@@ -5,18 +5,22 @@ import { fonts } from '@/app/utils/fonts';
 
 interface CartItem {
   id: string;
+  cartId: string;
   productId: string;
   title: string;
   image: string;
   price: number;
   quantity: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface CheckoutProps {
   cartItems: CartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
 }
 
-const Checkout: React.FC<CheckoutProps> = ({ cartItems }) => {
+const Checkout: React.FC<CheckoutProps> = ({ cartItems, setCartItems }) => {
   const calculateSubtotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
@@ -37,7 +41,10 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems }) => {
       method: 'DELETE',
     });
     // Refresh the cart items after removing an item
-    // You can implement this based on your specific requirements
+    const response = await fetch('/api/cart');
+    const updatedCartItems = await response.json();
+    // Update the cartItems state with the refreshed data
+    setCartItems(updatedCartItems);
   };
 
   const updateQuantity = async (itemId: string, quantity: number) => {
@@ -49,7 +56,10 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems }) => {
       body: JSON.stringify({ quantity }),
     });
     // Refresh the cart items after updating the quantity
-    // You can implement this based on your specific requirements
+    const response = await fetch('/api/cart');
+    const updatedCartItems = await response.json();
+    // Update the cartItems state with the refreshed data
+    setCartItems(updatedCartItems);
   };
 
   return (
