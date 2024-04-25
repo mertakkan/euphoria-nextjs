@@ -41,10 +41,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, setCartItems }) => {
       method: 'DELETE',
     });
     // Refresh the cart items after removing an item
-    const response = await fetch('/api/cart');
-    const updatedCartItems = await response.json();
-    // Update the cartItems state with the refreshed data
-    setCartItems(updatedCartItems);
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
   };
 
   const updateQuantity = async (itemId: string, quantity: number) => {
@@ -55,11 +52,12 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, setCartItems }) => {
       },
       body: JSON.stringify({ quantity }),
     });
-    // Refresh the cart items after updating the quantity
-    const response = await fetch('/api/cart');
-    const updatedCartItems = await response.json();
-    // Update the cartItems state with the refreshed data
-    setCartItems(updatedCartItems);
+    // Update the cartItems state with the new quantity
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === itemId ? { ...item, quantity } : item
+      )
+    );
   };
 
   return (
